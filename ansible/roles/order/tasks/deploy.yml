@@ -1,27 +1,34 @@
 - name: create release directory
   file:
-    path: /opt/apps/order
-    state:
-    recurse:
-    mode:
+    path: "/opt/apps/order/releases/{{ order.version }}"
+    state: directory
+    recurse: yes
+    mode: 0755
 
 - name: download order artifact
   get_url:
-    url:
-    dest:
-    mode:
+    url: "{{ order.artifact }}"
+    dest: "/opt/apps/order/releases/{{ order.version }}"
+    mode: 0755
   notify: restart order service
+  
+- name: create relase symlink
+  file:
+    src: "/opt/apps/frontend/releases/{{ order.version }}"
+    dest: /opt/order
+    state: link
+  notify: restart frontend service
 
-- name: copy supervisor config for frontend
-  xxx:
+- name: copy supervisor config for order
+  copy:
     src: order.supervisor.conf
-    dest:
-    mode:
+    dest: /etc/supervisor/conf.d/order.conf
+    mode: 0755
   notify: restart supervisor
 
 - meta: flush_handlers
 
 - name: start order service
   supervisorctl:
-    xxx:
-    xxx:
+    name: order
+    state: started
