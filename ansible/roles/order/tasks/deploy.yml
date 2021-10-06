@@ -1,27 +1,27 @@
 - name: create release directory
   file:
-    path: /opt/apps/carts
+    path: /opt/apps/order
     state:
     recurse:
     mode:
 
-- name: download carts artifact
+- name: download order artifact
   get_url:
     url:
     dest:
     mode:
-  notify: restart carts service
+  notify: restart order service
 
 - name: copy supervisor config for frontend
   xxx:
-    src: carts.supervisor.conf
+    src: order.supervisor.conf
     dest:
     mode:
   notify: restart supervisor
 
 - meta: flush_handlers
 
-- name: start carts service
+- name: start order service
   supervisorctl:
     xxx:
     xxx:
