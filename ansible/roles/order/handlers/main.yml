@@ -1,6 +1,6 @@
 ---
 # handlers file for catalogue
-- name: restart carts service
+- name: restart order service
   supervisorctl:
-    name: carts
+    name: order
     state: restarted
