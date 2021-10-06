@@ -1,0 +1,8 @@
+additional:
+  packages:
+    - openjdk-8-jre-headless
+    - openjdk-8-jdk-headless
+    - maven
+
+carts:
+  artifact: http://localhost:9080/job/Order_service_Package/lastSuccessfulBuild/artifact/target/orders.jar
