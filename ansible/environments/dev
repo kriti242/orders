@@ -1,3 +1,0 @@
-# add inventory for dev env to this file
-[orders]
-192.168.61.11 ansible_ssh_pass=codespaces

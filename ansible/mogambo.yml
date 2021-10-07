@@ -1,3 +1,0 @@
-# This is a sitewide playbook
-- import_playbook: order.yml
-# - import_playbook: employee.yml

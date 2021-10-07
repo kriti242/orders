@@ -1,6 +1,0 @@
----
-# handlers file for catalogue
-- name: restart order service
-  supervisorctl:
-    name: order
-    state: restarted

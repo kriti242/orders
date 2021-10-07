@@ -1,6 +1,0 @@
----
-  - hosts: order
-    become: yes
-    roles:
-      - { role: common }
-      - { role: order }
